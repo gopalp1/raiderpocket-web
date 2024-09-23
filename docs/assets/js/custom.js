@@ -36,11 +36,7 @@
       }
   });
   
-  $("#modal_trigger").leanModal({
-		top: 100,
-		overlay: 0.6,
-		closeButton: ".modal_close"
-});
+
 
 $(function() {
 		// Calling Login Form
@@ -67,53 +63,56 @@ $(function() {
 				return false;
 		});
 });
+// Ensure the .menu-trigger is visible when the window width is less than 991px
+$(document).ready(function() {
+  function toggleMenuTrigger() {
+    var width = $(window).width();
+    if (width < 991) {
+      $('.menu-trigger').css('display', 'block');
+    } else {
+      $('.menu-trigger').css('display', 'none');
+      // Ensure the menu is reset when the screen is resized back to larger width
+      $('.header-area .nav').css('display', 'block');
+      $('.menu-trigger').removeClass('active');
+    }
+  }
 
-  // Acc
-  $(document).on("click", ".naccs .menu div", function() {
-    var numberIndex = $(this).index();
+  // Initial trigger visibility check
+  toggleMenuTrigger();
 
-    if (!$(this).is("active")) {
-        $(".naccs .menu div").removeClass("active");
-        $(".naccs ul li").removeClass("active");
-
-        $(this).addClass("active");
-        $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-        var listItemHeight = $(".naccs ul")
-          .find("li:eq(" + numberIndex + ")")
-          .innerHeight();
-        $(".naccs ul").height(listItemHeight + "px");
-      }
+  // Adjust visibility on window resize
+  $(window).resize(function() {
+    toggleMenuTrigger();
   });
-	
 
-	// Menu Dropdown Toggle
-  if($('.menu-trigger').length){
-    $(".menu-trigger").on('click', function() { 
+  // Menu Dropdown Toggle
+  if ($('.menu-trigger').length) {
+    $(".menu-trigger").on('click', function() {
       $(this).toggleClass('active');
       $('.header-area .nav').slideToggle(200);
     });
   }
 
-
-  // Menu elevator animation
+  // Menu elevator animation for smooth scrolling
   $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       if (target.length) {
         var width = $(window).width();
-        if(width < 991) {
+        if (width < 991) {
           $('.menu-trigger').removeClass('active');
-          $('.header-area .nav').slideUp(200);  
-        }       
-        $('html,body').animate({
+          $('.header-area .nav').slideUp(200);
+        }
+        $('html, body').animate({
           scrollTop: (target.offset().top) + 1
         }, 700);
         return false;
       }
     }
   });
+});
+
 
   $(document).ready(function () {
       $(document).on("scroll", onScroll);
@@ -140,39 +139,24 @@ $(function() {
       });
   });
 
-  function onScroll(event){
-      var scrollPos = $(document).scrollTop();
-      $('.nav a').each(function () {
-          var currLink = $(this);
-          var refElement = $(currLink.attr("href"));
-          if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-              $('.nav ul li a').removeClass("active");
-              currLink.addClass("active");
-          }
-          else{
-              currLink.removeClass("active");
-          }
-      });
-  }
+  function onScroll(event) {
+    var scrollPos = $(document).scrollTop();
+    $('.nav a').each(function () {
+        var currLink = $(this);
+        var refElement = $(currLink.attr("href"));
+        
+        // Check if refElement is valid
+        if (refElement.length) {
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('.nav ul li a').removeClass("active");
+                currLink.addClass("active");
+            } else {
+                currLink.removeClass("active");
+            }
+        }
+    });
+}
 
-
-  // Acc
-  $(document).on("click", ".naccs .menu div", function() {
-    var numberIndex = $(this).index();
-
-    if (!$(this).is("active")) {
-        $(".naccs .menu div").removeClass("active");
-        $(".naccs ul li").removeClass("active");
-
-        $(this).addClass("active");
-        $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-        var listItemHeight = $(".naccs ul")
-          .find("li:eq(" + numberIndex + ")")
-          .innerHeight();
-        $(".naccs ul").height(listItemHeight + "px");
-      }
-  });
 
 
 	// Page loading animation

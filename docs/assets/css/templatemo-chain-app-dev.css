@@ -1234,29 +1234,14 @@ About Us
   position: relative;
   z-index: 1;
 }
-.box-item:hover {
+/* .box-item:hover {
   background-image: url(../images/about1.webp);
   background-position: right top;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.5;
-}
-.box-item:hover h4,
-.box-item:hover ul li{
-  color: #0c0b0b;
-}
-/* .about-section:after {
-  background-image: url(../images/about-bg.jpg);
-  width: 777px;
-  height: 1132px;
-  content: '';
-  position: absolute;
-  background-repeat: no-repeat;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 0;
 } */
+
+
 
 
 /* 

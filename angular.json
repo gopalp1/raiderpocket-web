@@ -29,8 +29,13 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "src/assets/vendor/jquery/jquery.min.js",
+              "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/js/owl-carousel.js",
+              "src/assets/js/animation.js",
+              "src/assets/js/imagesloaded.js",
+              "src/assets/js/popup.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
