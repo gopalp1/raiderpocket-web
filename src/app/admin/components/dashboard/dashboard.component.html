@@ -1,0 +1,35 @@
+
+<app-app-header title="Dashboard"></app-app-header>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6" *ngFor="let item of data" >
+        
+        <mat-card class="" style="background-color: #fff; padding: 15px;" [routerLink]="item.route"  >
+                <div class="flex mb-1-5">
+                  <div class="w-1-4 mr-3-5 top-0 left-0">
+                    <div
+                      style="
+                        padding: 5px;
+                        background: #a4bb00;
+                        box-shadow: 5px 6px 6px #c1c1c1;
+                        height: 80px;
+                        margin: auto;
+                        width: 100px;
+                        text-align: center;
+                        padding-top: 22px;
+                        color: #fff;
+                      "
+                    >
+                      {{item?.label}}
+                    </div>
+                  </div>
+                  <div style="margin: 25px auto; height: 20px; ">
+                    <h5 style="color: #0163aa; text-align: center;" >
+                    {{item?.sublabel | titlecase}}
+                    </h5>
+                  </div>
+                </div>
+              </mat-card>
+        </div>
+    </div>
+  </div>

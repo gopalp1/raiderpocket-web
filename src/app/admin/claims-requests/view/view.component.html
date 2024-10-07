@@ -1,0 +1,169 @@
+<div class="comment-box">
+    <div class="d-flex justify-content-end">
+      <button mat-icon-button (click)="close()">
+        <mat-icon class="icon">close</mat-icon>
+      </button>
+    </div>
+  
+    <div class="detail-table">
+      <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="data?.claimType==='Hospital-bill'">
+          <tr>
+            <td>Claim Type</td>
+            <td>{{ data?.claimType }}</td>
+          </tr>
+          <tr>
+            <td>Hospital Name</td>
+            <td>{{ data?.hospitalName }}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{{ data?.city }}</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td>{{ data?.area }}</td>
+          </tr>
+          <tr>
+            <td>Bill Value</td>
+            <td>{{ data?.billValue | currency }}</td>
+          </tr>
+          <tr>
+            <td>Bill Photo</td>
+            <td><a [href]="data.billPhoto" target="_blank"><img *ngIf="data.billPhoto" [src]="data?.billPhoto" alt="Photo 1" style="width: 100px; height: 100px;"/></a></td>
+          </tr>
+          <tr>
+            <td>Patient Name</td>
+            <td>{{ data?.patientName }}</td>
+          </tr>
+          <tr>
+            <td>Admission Date</td>
+            <td>{{ data?.admissionDate | date: 'longDate' }}</td>
+          </tr>
+          <tr>
+            <td>Discharge Date</td>
+            <td>{{ data?.dischargeDate | date: 'longDate' }}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>
+              <mat-form-field class="text-base w-full" appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select [(ngModel)]="data.status" (selectionChange)="updateStatus($event)">
+                  <mat-option *ngFor="let item of Status" [value]="item.value">
+                    {{ item.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="data?.claimType==='Bike-service'">
+            <tr>
+              <td>Claim Type</td>
+              <td>{{ data?.claimType }}</td>
+            </tr>
+            <tr>
+              <td>Bike Service Name</td>
+              <td>{{ data?.bikeServiceName }}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{ data?.city }}</td>
+            </tr>
+            <tr>
+              <td>Area</td>
+              <td>{{ data?.area }}</td>
+            </tr>
+            <tr>
+              <td>Bill Value</td>
+              <td>{{ data?.billValue | currency }}</td>
+            </tr>
+            <tr>
+              <td>Bill Photo</td>
+              <td><a [href]="data.billPhoto" target="_blank"><img *ngIf="data.billPhoto" [src]="data?.billPhoto" alt="Photo 1" style="width: 100px; height: 100px;"/></a></td>
+
+            </tr>
+            <tr>
+              <td>Customer Name</td>
+              <td>{{ data?.customerName }}</td>
+            </tr>
+            <tr>
+              <td>Service Date</td>
+              <td>{{ data?.serviceDate | date: 'longDate' }}</td>
+            </tr>
+            <tr>
+              <td>Bike Type</td>
+              <td>{{ data?.bikeType }}</td>
+            </tr>
+            <tr>
+              <td>Vehicle Number</td>
+              <td>{{ data?.vehicleNum }}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>
+                <mat-form-field class="text-base w-full" appearance="outline">
+                  <mat-label>Status</mat-label>
+                  <mat-select [(ngModel)]="data.status" (selectionChange)="updateStatus($event)">
+                    <mat-option *ngFor="let item of Status" [value]="item.value">
+                      {{ item.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="data?.claimType==='Mobile-service'">
+            <tr>
+              <td>Claim Type</td>
+              <td>{{ data?.claimType }}</td>
+            </tr>
+            <tr>
+              <td>Mobile Service Name</td>
+              <td>{{ data?.mobileServiceName }}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{ data?.city }}</td>
+            </tr>
+            <tr>
+              <td>Area</td>
+              <td>{{ data?.area }}</td>
+            </tr>
+            <tr>
+              <td>Bill Value</td>
+              <td>{{ data?.billValue | currency }}</td>
+            </tr>
+            <tr>
+              <td>Bill Photo</td>
+              <td><a [href]="data.billPhoto" target="_blank"><img *ngIf="data.billPhoto" [src]="data?.billPhoto" alt="Photo 1" style="width: 100px; height: 100px;"/></a></td>
+            </tr>
+            <tr>
+              <td>Customer Name</td>
+              <td>{{ data?.customerName }}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>
+                <mat-form-field class="text-base w-full" appearance="outline">
+                  <mat-label>Status</mat-label>
+                  <mat-select [(ngModel)]="data.status" (selectionChange)="updateStatus($event)">
+                    <mat-option *ngFor="let item of Status" [value]="item.value">
+                      {{ item.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  

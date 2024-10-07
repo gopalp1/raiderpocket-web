@@ -1,0 +1,27 @@
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+@Component({
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.scss']
+})
+export class ViewComponent {
+
+  Status: any = [
+    { value: 'Pending', label: 'Pending' },
+    { value: 'Approved', label: 'Approved' },
+    { value: 'Rejected', label: 'Rejected' }
+  ]
+constructor( public dialogRef: MatDialogRef<ViewComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any,){
+console.log(data,"123456")
+}
+
+close(){
+  this.dialogRef.close()
+}
+updateStatus(data:any){
+
+}
+}

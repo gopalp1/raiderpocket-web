@@ -1,0 +1,66 @@
+<app-app-header title="Onboarded users"></app-app-header>
+<mat-card class="example-card" style="background-color: white; margin: 15px;">
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+        <!-- Profile Picture Column -->
+        <ng-container matColumnDef="profilePic">
+          <th mat-header-cell *matHeaderCellDef> Profile Picture </th>
+          <td mat-cell *matCellDef="let element">
+            <img [src]="element.profilePic" alt="Profile" class="profile_pic" width="50">
+          </td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+  
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+  
+        <!-- Date of Birth Column -->
+        <ng-container matColumnDef="dateOfBirth">
+          <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+          <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+        </ng-container>
+  
+        <!-- Phone Number Column -->
+        <ng-container matColumnDef="phoneNo">
+          <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
+        </ng-container>
+  
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+  
+        <!-- City and Area Column -->
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef> City/Area </th>
+          <td mat-cell *matCellDef="let element"> {{element.city}}, {{element.area}} </td>
+        </ng-container>
+  
+         <!-- Is Accepted Column -->
+         <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element">
+            <span *ngIf="element?.status==='Pending'">-----</span>
+            <span *ngIf="element?.status !=='Pending' " [style.color]="element?.status==='Approved'? 'green' :'red' ">{{element.status }} </span>  
+          </td>
+        </ng-container>
+  
+  
+        <!-- Header and Row Declarations -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="view(row)"></tr>
+      </table>
+    </div>
+  </mat-card>
+  

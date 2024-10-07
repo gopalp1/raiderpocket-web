@@ -1,0 +1,63 @@
+/* Sidebar background color */
+.expand {
+  width: 250px;
+  height: 100%;
+}
+.collapse{
+  width: 60px;
+  height: 100%;
+}
+
+
+/* Ensure mat-toolbar has the correct color */
+.mat-toolbar {
+  background-color: #007bff; 
+  color: white !important;
+}
+
+/* Style for navigation links */
+nav a:hover {
+ font-weight: bold;
+ color: rgb(8, 72, 97)!important;
+ background-color: #bed5f2; 
+
+}
+nav a:hover mat-icon{
+font-size: 25px;
+}
+nav a{
+  font-size: 18px;
+}
+.active-link{
+  font-weight: bold;
+  color: white !important;
+  background-color: #007bff; 
+}
+mat-sidenav-container{
+  height: calc(100vh - 78px); 
+  margin: 0;
+}
+.icon{
+  margin-right: 8px;
+  // font-size: 30px !important;
+  width: 40px !important;
+}
+
+/* Active link styling */
+.router-link-active {
+  background-color: #007bff; 
+  color: white !important; 
+}
+
+
+
+/* Flexbox for toolbar content */
+.spacer {
+  flex-grow: 1
+  
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+}

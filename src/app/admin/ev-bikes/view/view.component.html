@@ -1,0 +1,85 @@
+<div class="comment-box">
+    <div class="d-flex justify-content-end">
+      <button mat-icon-button (click)="close()">
+        <mat-icon class="icon">close</mat-icon>
+      </button>
+    </div>
+  
+    <div class="detail-table">
+      <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>{{ data?.name }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ data?.email }}</td>
+          </tr>
+          <tr>
+            <td>Mobile Number</td>
+            <td>{{ data?.mobileNum }}</td>
+          </tr>
+          <tr>
+            <td>Current Address</td>
+            <td>{{ data?.currentAddress }}</td>
+          </tr>
+          <tr>
+            <td>Reference Number 1</td>
+            <td>{{ data?.referenceNum1 }}</td>
+          </tr>
+          <tr>
+            <td>Reference Number 2</td>
+            <td>{{ data?.referenceNum2 }}</td>
+          </tr>
+          <tr>
+            <td>Client</td>
+            <td>{{ data?.client }}</td>
+          </tr>
+          <tr>
+            <td>Bike Type</td>
+            <td>{{ data?.bikeType }}</td>
+          </tr>
+          <tr>
+            <td>Vehicle Number</td>
+            <td>{{ data?.vehicleNum }}</td>
+          </tr>
+          <tr>
+            <td>Bike Photo 1</td>
+            <td><a [href]="data?.bikePhotos?.photo1" target="_blank">View Photo 1</a></td>
+          </tr>
+          <tr>
+            <td>Bike Photo 2</td>
+            <td><a [href]="data?.bikePhotos?.photo2" target="_blank">View Photo 2</a></td>
+          </tr>
+
+          <tr>
+            <td>Status</td>
+            <td>
+                <mat-form-field class="text-base w-full" appearance="outline" >
+                    <mat-label>Status</mat-label>
+                   
+                    <mat-select [(ngModel)]="data.status"  
+                      (selectionChange)="updateStatus($event)"
+                    >
+                      <mat-option
+                        *ngFor="let item of Status"
+                        [value]="item.value"
+                      >
+                        {{ item.label }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

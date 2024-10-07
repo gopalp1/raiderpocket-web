@@ -1,0 +1,65 @@
+<div class="comment-box">
+    <div class="d-flex justify-content-end">
+        <button mat-icon-button (click)="close()">
+            <mat-icon class="icon">close</mat-icon>
+          </button>
+    </div>
+    
+    <div class="detail-table">
+      <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>Name</td>
+            <td>{{ data?.name }}</td>
+          </tr>
+          <tr>
+            <td>Phone No</td>
+            <td>{{ data?.phoneNo }}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{{ data?.city }}</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td>{{ data?.area }}</td>
+          </tr>
+          <tr>
+            <td>Company Name</td>
+            <td>{{ data?.companyName }}</td>
+          </tr>
+          <tr>
+            <td>Job Type</td>
+            <td>{{ data?.jobType }}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>
+                <mat-form-field class="text-base w-full" appearance="outline" >
+                    <mat-label>Status</mat-label>
+                   
+                    <mat-select [(ngModel)]="data.status"  
+                      (selectionChange)="updateStatus($event)"
+                    >
+                      <mat-option
+                        *ngFor="let item of Status"
+                        [value]="item.value"
+                      >
+                        {{ item.label }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

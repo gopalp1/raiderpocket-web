@@ -1,0 +1,59 @@
+<app-app-header title=" Requests For EV - Bike"></app-app-header>
+<mat-card class="example-card" style="background-color: white; margin: 15px;">
+    <div class="table-container">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+  
+    <!-- Mobile Number Column -->
+    <ng-container matColumnDef="mobileNum">
+      <mat-header-cell *matHeaderCellDef> Mobile Number </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mobileNum}} </mat-cell>
+    </ng-container>
+  
+  
+  
+    <!-- Client Column -->
+    <ng-container matColumnDef="client">
+      <mat-header-cell *matHeaderCellDef> Client </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.client}} </mat-cell>
+    </ng-container>
+  
+    <!-- Bike Type Column -->
+    <ng-container matColumnDef="bikeType">
+      <mat-header-cell *matHeaderCellDef> Bike Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bikeType}} </mat-cell>
+    </ng-container>
+  
+    <!-- Vehicle Number Column -->
+    <ng-container matColumnDef="vehicleNum">
+      <mat-header-cell *matHeaderCellDef> Vehicle Number </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.vehicleNum}} </mat-cell>
+    </ng-container>
+  
+      <!-- Is Accepted Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span *ngIf="element?.status==='Pending'">-----</span>
+          <span *ngIf="element?.status !=='Pending' " [style.color]="element?.status==='Approved'? 'green' :'red' ">{{element.status }} </span>  
+        </mat-cell>
+      </ng-container>
+  
+    <!-- Header and Row definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="view(row)"></mat-row>
+  
+  </mat-table>
+</div>
+</mat-card>
