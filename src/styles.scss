@@ -2,7 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-box-sizing: border-box; overflow: auro; }
+box-sizing: border-box; overflow: auto; }
 .mat-mdc-table .mat-mdc-row:hover {
     background-color: rgb(233, 228, 228); /* Change background color on hover */
     cursor: pointer; /* Change cursor to pointer */
