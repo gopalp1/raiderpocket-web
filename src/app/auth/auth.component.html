@@ -1,0 +1,43 @@
+<div style="background: #5ccffb; height: 14vh">
+  <a href="/">
+    <img
+      (click)="navigateToWeb()"
+      src="../../assets/images/Logo-Final.png"
+      style="width: 150px; padding: 15px"
+    />
+  </a>
+</div>
+<div class="login-container">
+  <div class="login-card">
+    <img src="../../assets/images/logo.jpeg" style="width: 150px" />
+    <div *ngIf="!isOtpSent">
+      <h2>Login</h2>
+      <p>Enter your mobile number to receive an OTP</p>
+      <input
+        type="text"
+        [(ngModel)]="mobileNumber"
+        placeholder="Enter mobile number"
+        [pattern]="mobilePattern"
+        class="mobile-input"
+        (keyup.enter)="sendOtp()"
+      />
+      <button (click)="sendOtp()" class="verify-btn">Send OTP</button>
+    </div>
+    <div *ngIf="isOtpSent">
+      <div class="back-btn">
+        <i (click)="goBack()" class="fa-solid fa-arrow-left icon"></i>
+      </div>
+      <h2>Verify OTP</h2>
+      <p>Enter the OTP sent to {{ mobileNumber }}</p>
+      <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        [config]="configuration"
+      ></ng-otp-input>
+
+      <div class="actions">
+        <button (click)="resendOtp()" class="resend-btn">Resend OTP</button>
+        <button (click)="verifyOtp()" class="verify-btn">Verify OTP</button>
+      </div>
+    </div>
+  </div>
+</div>

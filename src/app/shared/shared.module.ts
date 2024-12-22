@@ -20,13 +20,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
-
-
+import { LogoutDialogComponent } from './components/logout-dialog/logout-dialog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppHeaderComponent
+    AppHeaderComponent,
+    LogoutDialogComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -69,7 +72,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatToolbarModule,
     MatTableModule,
     MatButtonToggleModule,
-    FormsModule
-  ]
+    FormsModule,
+    HeaderComponent,
+    FooterComponent ,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -1,786 +1,219 @@
-
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
-          <span class="dot"></span>
-          <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-      <!-- ***** Preloader End ***** -->
-  
-      <!-- ***** Header Area Start ***** -->
-      <header
-        class="header-area header-sticky wow slideInDown"
-        data-wow-duration="0.75s"
-        data-wow-delay="0s"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <nav class="main-nav">
-                <!-- ***** Logo Start ***** -->
-                <a href="index.html" class="logo">
-                  <img
-                    src="assets/images/logo1.png"
-                    alt="Chain App Dev"
-                    style="width: 100px;"
-                  />
-                </a>
-                <!-- ***** Logo End ***** -->
-                <!-- ***** Menu Start ***** -->
-                <ul class="nav">
-                  <li class="scroll-to-section">
-                    <a href="#top" >Home</a>
-                  </li>
-                  <li class="scroll-to-section">
-                    <a  href="#services"  >Services</a>
-                  </li>
-                  <li class="scroll-to-section" ><a  href="#about" >About</a></li>
-                  <li class="scroll-to-section">
-                    <a  href="#pricing">Pricing</a>
-                  </li>
-                  <!-- <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li> -->
-                  <li>
-                    <div class="gradient-button" data-bs-toggle="modal" (click)="goToAdmin()">
-                      <a 
-                        ><i class="fa fa-sign-in-alt"></i> Admin Login</a
-                      >
-  
-                    </div>
-                  </li>
-                </ul>
-                <a class="menu-trigger" >
-                  <span>Menu</span>
-                </a>
-                <!-- ***** Menu End ***** -->
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- ***** Header Area End ***** -->
-  
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Login</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="modal-body">
-              <form action="/action_page.php">
-                <div class="mb-3 mt-3">
-                  <label for="email">Email / User name:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                </div>
-                <div class="mb-3">
-                  <label for="pwd">Password:</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                </div>
-              </form> 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" >Submit</button>
-  
-            </div>
-      
-          </div>
-        </div>
-      </div>
+<div id="js-preloader" class="js-preloader">
+  <div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
+</div>
+<app-header></app-header>
+
+<div
+  class="main-banner wow fadeIn"
+  id="top"
+  data-wow-duration="1s"
+  data-wow-delay="0.5s"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div
+              class="left-content show-up header-text wow fadeInLeft"
+              data-wow-duration="1s"
+              data-wow-delay="1s"
+            >
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Get The Latest App From Play Stores</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div
+              class="right-image wow fadeInRight"
+              data-wow-duration="1s"
+              data-wow-delay="0.5s"
+            >
+              <img src="assets/images/slider-dec.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="services" class="services section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div
+          class="section-heading wow fadeInDown"
+          data-wow-duration="1s"
+          data-wow-delay="0.5s"
+        >
+          <h4 [innerHtml]="webSiteData.SERVICES.title"></h4>
+          <img src="assets/images/heading-line-dec.png" alt="" />
+          <div [innerHtml]="webSiteData.SERVICES.description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row d-flex align-items-stretch">
       <div
-        class="main-banner wow fadeIn"
-        id="top"
-        data-wow-duration="1s"
-        data-wow-delay="0.5s"
+        class="col-lg-3"
+        *ngFor="let service of webSiteData.SERVICES.services"
       >
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="row">
-                <div class="col-lg-6 align-self-center">
-                  <div
-                    class="left-content show-up header-text wow fadeInLeft"
-                    data-wow-duration="1s"
-                    data-wow-delay="1s"
-                  >
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <h2>Get The Latest App From Play Stores</h2>
-                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div
-                    class="right-image wow fadeInRight"
-                    data-wow-duration="1s"
-                    data-wow-delay="0.5s"
-                  >
-                    <img src="assets/images/slider-dec.png" alt="" />
-                  </div>
-                </div>
-              </div>
+        <div class="service-item" [ngClass]="service.iconClass">
+          <div class="icon"></div>
+          <h4>{{ service.title }}</h4>
+          <p>{{ service.description }}</p>
+          <p *ngIf="service.showMore">{{ service.moreInfo }}</p>
+          <div class="text-button" (click)="toggleMoreInfo(service)">
+            <a>
+              {{ service.showMore ? "Read Less" : "Read More" }}
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-arrow-right': !service.showMore,
+                  'fa-arrow-left': service.showMore
+                }"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about" class="about-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 align-self-center">
+        <div class="section-heading">
+          <h4>About <em>What We Do</em> &amp; Who We Are</h4>
+          <img src="assets/images/heading-line-dec.png" alt="" />
+          <p>
+            Rider Pocket is one of the Indias leading delivery platform .Rider
+            Pocket helps for job seekers who are looking for delivery jobs in
+            their locality,We are helping hand for riders providing career
+            growth along with aditional income through RIDER POCKET appIn rider
+            pocket once rider can onboard they will get benifits of joining kit
+            , delivery job along with electric bike. delivery riders get more
+            benifits they can claims their hospital bills ,Bike service bills,
+            New mobile bills and get cash back offers in Rider Pocket app
+          </p>
+          <p>
+            Once onboarded, riders gain access to a range of perks, including a
+            joining kit, delivery jobs, and even an electric bike to facilitate
+            their work. Rider Pocket goes beyond basic job support by offering
+            benefits such as reimbursement for hospital bills, bike service
+            expenses, and new mobile purchases. Riders also enjoy cashback
+            offers through the app, making it a comprehensive solution for
+            delivery professionals aiming for career growth and financial
+            stability. By combining employment opportunities with tangible
+            benefits, Rider Pocket is revolutionizing the delivery industry,
+            empowering riders to thrive both professionally and personally.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="box-item">
+              <h4><a href="#">Zero Maintance Cost</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="box-item">
+              <h4><a href="#">24/7 Help &amp; Support</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="box-item">
+              <h4><a href="#">Road side assistance</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="box-item">
+              <h4><a href="#">Swapping Battery</a></h4>
             </div>
           </div>
         </div>
       </div>
-  
-      <div id="services" class="services section">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-              <div
-                class="section-heading wow fadeInDown"
-                data-wow-duration="1s"
-                data-wow-delay="0.5s"
-              >
-                <h4>Amazing <em>Services &amp; Features</em> for you</h4>
-                <img src="assets/images/heading-line-dec.png" alt="" />
-                <p>
-                  We believe in driving the future of eco-friendly mobility. With
-                  a strong focus on providing efficient, reliable, and green
-                  transportation solutions, we are dedicated to making electric
-                  vehicles accessible for various needs. Whether you're looking to
-                  rent an EV bike for your daily commute, find flexible delivery
-                  jobs, or explore our range of electric 3 and 4-wheelers, we’ve
-                  got you covered.
-                </p>
-              </div>
-            </div>
-          </div>
+      <div class="col-lg-6">
+        <div class="right-image">
+          <img src="assets/images/about-right-dec.png" alt="" />
         </div>
-        <div class="container">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-lg-3">
-              <div class="service-item first-service">
-                <div class="icon"></div>
-                <h4>Rent EV Bikes</h4>
-                <p>
-                  Choose from a wide variety of electric bikes for rent and enjoy
-                  eco-friendly rides.
-                </p>
-                <div class="text-button">
-                  <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="service-item second-service">
-                <div class="icon"></div>
-                <h4>Delivery Jobs</h4>
-                <p>
-                  Join our network and deliver goods with electric vehicles.
-                  Flexible hours and great pay.
-                </p>
-                <div class="text-button">
-                  <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="service-item third-service">
-                <div class="icon"></div>
-                <h4>3 Wheelers EV</h4>
-                <p>
-                  Affordable and sustainable electric 3-wheelers for commercial
-                  and personal use.
-                </p>
-                <div class="text-button">
-                  <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="service-item fourth-service">
-                <div class="icon"></div>
-                <h4>4 Wheelers EV</h4>
-                <p>
-                  Explore our electric 4-wheeler options for personal and business
-                  use with zero emissions.
-                </p>
-                <div class="text-button">
-                  <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="about" class="about-section">
+  <div class="container">
+    <div class="row d-flex align-items-stretch">
+      <div
+        *ngFor="let section of webSiteData.MISSION_VISION_VALUES_OBJECTIVE"
+        class="col-lg-3 col-md-6 mb-4"
+      >
+        <div class="box-item h-100">
+          <h4>{{ section.title }}</h4>
+          <ul>
+            <li *ngFor="let item of section.items">
+              <b>{{ item.label }}:</b> {{ item.description }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="pricing" class="pricing-tables">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="section-heading">
+          <h4>{{ webSiteData.PRICINGPLANS.heading.title }}</h4>
+          <img
+            [src]="webSiteData.PRICINGPLANS.heading.image"
+            alt="Heading Decoration"
+          />
+          <p>{{ webSiteData.PRICINGPLANS.heading.description }}</p>
+        </div>
+      </div>
+      <div
+        *ngFor="let plan of webSiteData.PRICINGPLANS?.pricingPlans"
+        class="col-lg-4"
+        [class.offset-lg-2]="plan.price === '₹499'"
+      >
+        <div class="pricing-item-pro">
+          <span class="price">{{ plan.price }}</span>
+          <h4>{{ plan.title }}</h4>
+          <div class="icon">
+            <img [src]="plan.icon" alt="Pricing Icon" />
+          </div>
+          <ul>
+            <li *ngFor="let feature of plan.features">
+              <b>{{ feature.label }}:</b> {{ feature.description }}
+            </li>
+          </ul>
+          <div
+            *ngIf="plan?.buttonText"
+            class="border-button"
+            (click)="plan?.buttonAction()"
+            style="cursor: pointer"
+          >
+            <a>{{ plan?.buttonText }}</a>
           </div>
         </div>
       </div>
-  
-      <div id="about" class="about-us section">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="section-heading">
-                <h4>About <em>What We Do</em> &amp; Who We Are</h4>
-                <img src="assets/images/heading-line-dec.png" alt="" />
-                <p>
-                  Rider Pocket is one of the Indias leading delivery platform
-                  .Rider Pocket helps for job seekers who are looking for delivery
-                  jobs in their locality,We are helping hand for riders providing
-                  career growth along with aditional income through RIDER POCKET
-                  appIn rider pocket once rider can onboard they will get benifits
-                  of joining kit , delivery job along with electric bike. delivery
-                  riders get more benifits they can claims their hospital bills
-                  ,Bike service bills, New mobile bills and get cash back offers
-                  in Rider Pocket app
-                </p>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="box-item">
-                    <h4><a href="#">Maintance Problems</a></h4>
-                    <p>Lorem Ipsum Text</p>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="box-item">
-                    <h4><a href="#">24/7 Support &amp; Help</a></h4>
-                    <p>Lorem Ipsum Text</p>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="box-item">
-                    <h4><a href="#">Fixing Issues About</a></h4>
-                    <p>Lorem Ipsum Text</p>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="box-item">
-                    <h4><a href="#">Co. Development</a></h4>
-                    <p>Lorem Ipsum Text</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="right-image">
-                <img src="assets/images/about-right-dec.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="about" class="about-section">
-        <div class="container">
-          <div class="row d-flex align-items-stretch"> <!-- Flexbox for equal height -->
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="box-item h-100">
-                <h4>Mission</h4>
-                <ul>
-                  <li>Be the best in the eyes of our clients, employees, and owners.</li>
-                  <li>Provide supply quality riders and maintain our client satisfaction.</li>
-                  <li>Sustain our profitability.</li>
-                  <li>Have a wider range of providing manpower as per the clients' needs.</li>
-                  <li>Develop our team and employees' standards.</li>
-                </ul>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="box-item h-100">
-                <h4>Vision</h4>
-                <ul>
-                  <li>To be a big organization.</li>
-                  <li>To be one of the top positions in our field business.</li>
-                  <li>To develop our business and our employees.</li>
-                </ul>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="box-item h-100">
-                <h4>Values</h4>
-                <ul>
-                  <li>Meeting RIDERS' needs in regard to jobs and services quality.</li>
-                  <li>Satisfying DELIVERY RIDERS with our service.</li>
-                  <li>Supporting and motivating our DELIVERY PARTNERS.</li>
-                  <li>Be a partner with our CLIENTS.</li>
-                </ul>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="box-item h-100">
-                <h4>Objectives</h4>
-                <ul>
-                  <li>Grow our market share by having wider coverage of the INDIAN market.</li>
-                  <li>Our target growth is to be above the market growth rate.</li>
-                  <li>Increase the range of MANPOWER we supply.</li>
-                  <li>Search to import new quality CLIENTS.</li>
-                </ul>
-              </div>
-            </div>
-      
-          </div>
-        </div>
-      </div>
-      
-      <div id="clients" class="the-clients">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-              <div class="section-heading">
-                <h4>Check What <em>The Clients Say</em> About Our App Dev</h4>
-                <img src="assets/images/heading-line-dec.png" alt="" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eismod tempor incididunt ut labore et dolore magna.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="naccs">
-                <div class="grid">
-                  <div class="row">
-                    <div class="col-lg-7 align-self-center">
-                      <div class="menu">
-                        <div class="first-thumb active">
-                          <div class="thumb">
-                            <div class="row">
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <h4>David Martino Co</h4>
-                                <span class="date">30 November 2021</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                                <span class="category">Financial Apps</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span class="rating">4.8</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="thumb">
-                            <div class="row">
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <h4>Jake Harris Nyo</h4>
-                                <span class="date">29 November 2021</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                                <span class="category">Digital Business</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span class="rating">4.5</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="thumb">
-                            <div class="row">
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <h4>May Catherina</h4>
-                                <span class="date">27 November 2021</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                                <span class="category"
-                                  >Business &amp; Economics</span
-                                >
-                              </div>
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span class="rating">4.7</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="thumb">
-                            <div class="row">
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <h4>Random User</h4>
-                                <span class="date">24 November 2021</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                                <span class="category">New App Ecosystem</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span class="rating">3.9</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="last-thumb">
-                          <div class="thumb">
-                            <div class="row">
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <h4>Mark Amber Do</h4>
-                                <span class="date">21 November 2021</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                                <span class="category">Web Development</span>
-                              </div>
-                              <div class="col-lg-4 col-sm-4 col-12">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span class="rating">4.3</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                      <ul class="nacc">
-                        <li class="active">
-                          <div>
-                            <div class="thumb">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="client-content">
-                                    <img src="assets/images/quote.png" alt="" />
-                                    <p>
-                                      “Lorem ipsum dolor sit amet, consectetur
-                                      adpiscing elit, sed do eismod tempor idunte
-                                      ut labore et dolore magna aliqua darwin
-                                      kengan lorem ipsum dolor sit amet,
-                                      consectetur picing elit massive big blasta.”
-                                    </p>
-                                  </div>
-                                  <div class="down-content">
-                                    <img
-                                      src="assets/images/client-image.jpg"
-                                      alt=""
-                                    />
-                                    <div class="right-content">
-                                      <h4>David Martino</h4>
-                                      <span>CEO of David Company</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div>
-                            <div class="thumb">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="client-content">
-                                    <img src="assets/images/quote.png" alt="" />
-                                    <p>
-                                      “CTO, Lorem ipsum dolor sit amet,
-                                      consectetur adpiscing elit, sed do eismod
-                                      tempor idunte ut labore et dolore magna
-                                      aliqua darwin kengan lorem ipsum dolor sit
-                                      amet, consectetur picing elit massive big
-                                      blasta.”
-                                    </p>
-                                  </div>
-                                  <div class="down-content">
-                                    <img
-                                      src="assets/images/client-image.jpg"
-                                      alt=""
-                                    />
-                                    <div class="right-content">
-                                      <h4>Jake H. Nyo</h4>
-                                      <span>CTO of Digital Company</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div>
-                            <div class="thumb">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="client-content">
-                                    <img src="assets/images/quote.png" alt="" />
-                                    <p>
-                                      “May, Lorem ipsum dolor sit amet,
-                                      consectetur adpiscing elit, sed do eismod
-                                      tempor idunte ut labore et dolore magna
-                                      aliqua darwin kengan lorem ipsum dolor sit
-                                      amet, consectetur picing elit massive big
-                                      blasta.”
-                                    </p>
-                                  </div>
-                                  <div class="down-content">
-                                    <img
-                                      src="assets/images/client-image.jpg"
-                                      alt=""
-                                    />
-                                    <div class="right-content">
-                                      <h4>May C.</h4>
-                                      <span>Founder of Catherina Co.</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div>
-                            <div class="thumb">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="client-content">
-                                    <img src="assets/images/quote.png" alt="" />
-                                    <p>
-                                      “Lorem ipsum dolor sit amet, consectetur
-                                      adpiscing elit, sed do eismod tempor idunte
-                                      ut labore et dolore magna aliqua darwin
-                                      kengan lorem ipsum dolor sit amet,
-                                      consectetur picing elit massive big blasta.”
-                                    </p>
-                                  </div>
-                                  <div class="down-content">
-                                    <img
-                                      src="assets/images/client-image.jpg"
-                                      alt=""
-                                    />
-                                    <div class="right-content">
-                                      <h4>Random Staff</h4>
-                                      <span>Manager, Digital Company</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div>
-                            <div class="thumb">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="client-content">
-                                    <img src="assets/images/quote.png" alt="" />
-                                    <p>
-                                      “Mark, Lorem ipsum dolor sit amet,
-                                      consectetur adpiscing elit, sed do eismod
-                                      tempor idunte ut labore et dolore magna
-                                      aliqua darwin kengan lorem ipsum dolor sit
-                                      amet, consectetur picing elit massive big
-                                      blasta.”
-                                    </p>
-                                  </div>
-                                  <div class="down-content">
-                                    <img
-                                      src="assets/images/client-image.jpg"
-                                      alt=""
-                                    />
-                                    <div class="right-content">
-                                      <h4>Mark Am</h4>
-                                      <span>CTO, Amber Do Company</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div id="pricing" class="pricing-tables">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-              <div class="section-heading">
-                <h4>We Have The Best Pre-Order <em>Prices</em> You Can Get</h4>
-                <img src="assets/images/heading-line-dec.png" alt="" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eismod tempor incididunt ut labore et dolore magna.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="pricing-item-regular">
-                <span class="price">$12</span>
-                <h4>Standard Plan App</h4>
-                <div class="icon">
-                  <img src="assets/images/pricing-table-01.png" alt="" />
-                </div>
-                <ul>
-                  <li>Lorem Ipsum Dolores</li>
-                  <li>20 TB of Storage</li>
-                  <li class="non-function">Life-time Support</li>
-                  <li class="non-function">Premium Add-Ons</li>
-                  <li class="non-function">Fastest Network</li>
-                  <li class="non-function">More Options</li>
-                </ul>
-                <div class="border-button">
-                  <a href="#">Purchase This Plan Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="pricing-item-pro">
-                <span class="price">$25</span>
-                <h4>Business Plan App</h4>
-                <div class="icon">
-                  <img src="assets/images/pricing-table-01.png" alt="" />
-                </div>
-                <ul>
-                  <li>Lorem Ipsum Dolores</li>
-                  <li>50 TB of Storage</li>
-                  <li>Life-time Support</li>
-                  <li>Premium Add-Ons</li>
-                  <li class="non-function">Fastest Network</li>
-                  <li class="non-function">More Options</li>
-                </ul>
-                <div class="border-button">
-                  <a href="#">Purchase This Plan Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="pricing-item-regular">
-                <span class="price">$66</span>
-                <h4>Premium Plan App</h4>
-                <div class="icon">
-                  <img src="assets/images/pricing-table-01.png" alt="" />
-                </div>
-                <ul>
-                  <li>Lorem Ipsum Dolores</li>
-                  <li>120 TB of Storage</li>
-                  <li>Life-time Support</li>
-                  <li>Premium Add-Ons</li>
-                  <li>Fastest Network</li>
-                  <li>More Options</li>
-                </ul>
-                <div class="border-button">
-                  <a href="#">Purchase This Plan Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <footer id="newsletter">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-              <form id="search" action="#" method="GET">
-                <div class="row">
-                  <div class="col-lg-6 col-sm-6">
-                    <fieldset>
-                      <input
-                        type="address"
-                        name="address"
-                        class="email"
-                        placeholder="Email Address..."
-                        autocomplete="on"
-                        required
-                      />
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-6 col-sm-6">
-                    <fieldset>
-                      <button type="submit" class="main-button">
-                        Subscribe Now <i class="fa fa-angle-right"></i>
-                      </button>
-                    </fieldset>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="footer-widget">
-                <h4>Contact Us</h4>
-                <p>Rio de Janeiro - RJ, 22795-008, Brazil</p>
-                <p><a href="#">8884647698</a></p>
-                <!-- <p><a href="#">info@company.co</a></p> -->
-              </div>
-            </div>
-           
-            <div class="col-lg-4">
-              <div class="footer-widget">
-                <h4>Quick Links</h4>
-                <ul>
-                  <li><a href="#top">Home</a></li>
-                  <li><a href="#services">Services</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#pricing">Pricing</a></li>
-                </ul>
-               
-               
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="footer-widget">
-                <h4>About Our Company</h4>
-                <div class="logo">
-                  <img src="assets/images/logo1.png" alt="" />
-                </div>
-                <p class="footer-about">
-                  Rider Pocket is one of the Indias leading delivery platform
-                  .Rider Pocket helps for job seekers who are looking for delivery
-                  jobs in their locality,We are helping hand for riders providing
-                  career growth along with aditional income through RIDER POCKET
-                  appIn rider pocket once rider can onboard they will get benifits
-                  of joining kit , delivery job along with electric bike. delivery
-                  riders get more benifits they can claims their hospital bills
-                  ,Bike service bills, New mobile bills and get cash back offers
-                  in Rider Pocket app
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="copyright-text">
-                <p>
-                  Copyright © 2024 Raider pocket Company. All Rights Reserved.
-                  <br />
-                 
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-  
-  
-  
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
