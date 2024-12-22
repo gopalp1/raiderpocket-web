@@ -1,37 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-box-sizing: border-box; overflow: hidden; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  overflow: auto;
+}
 .mat-mdc-table .mat-mdc-row:hover {
-    background-color: rgb(233, 228, 228); /* Change background color on hover */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  background-color: rgb(233, 228, 228); /* Change background color on hover */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .table-container {
-    overflow-x: auto; /* Enable horizontal scrolling */
-  }
-  
-  table {
-    min-width: 100%; /* Ensure the table takes up at least full width */
-  }
-  
-  .mat-header-cell, .mat-cell {
-    padding: 8px;
-    text-align: left;
-    
-  }
-  .mdc-data-table__header-row{
-    background-color: darkblue !important;
-    }
-    .mat-mdc-header-cell{
-        color: white  !important;
-    }
- 
-  .mat-header-row, .mat-row {
-    display: table-row;
-    width: 100%;
-    table-layout: fixed;
-  }
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+table {
+  min-width: 100%; /* Ensure the table takes up at least full width */
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 8px;
+  text-align: left;
+}
+.mdc-data-table__header-row {
+  background-color: darkblue !important;
+}
+.mat-mdc-header-cell {
+  color: white !important;
+}
+
+.mat-header-row,
+.mat-row {
+  display: table-row;
+  width: 100%;
+  table-layout: fixed;
+}
