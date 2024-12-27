@@ -10,6 +10,7 @@
 <div class="login-container">
   <div class="login-card">
     <img src="../../assets/images/logo.jpeg" style="width: 150px" />
+    <div id="recaptcha-container"></div>
     <div *ngIf="!isOtpSent">
       <h2>Login</h2>
       <p>Enter your mobile number to receive an OTP</p>
@@ -33,9 +34,7 @@
         (onInputChange)="onOtpChange($event)"
         [config]="configuration"
       ></ng-otp-input>
-
       <div class="actions">
-        <button (click)="resendOtp()" class="resend-btn">Resend OTP</button>
         <button (click)="verifyOtp()" class="verify-btn">Verify OTP</button>
       </div>
     </div>

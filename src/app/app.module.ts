@@ -9,8 +9,7 @@ import { WebComponent } from './web/web.component';
 import { AuthComponent } from './auth/auth.component';
 import { CoreModule } from './core/core.module';
 import { NgOtpInputModule } from 'ng-otp-input';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,11 +17,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyATAOJcTLwJVAoV2tZBgeKQgeIbYwy7Cps',
+  authDomain: 'mr-meat-4ea02.firebaseapp.com',
+  projectId: 'mr-meat-4ea02',
+  storageBucket: 'mr-meat-4ea02.firebasestorage.app',
+  messagingSenderId: '933804502159',
+  appId: '1:933804502159:web:f68515cfc8be5905a894fa',
+  measurementId: 'G-7RGY1RX0QH',
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +46,8 @@ import { ContactusComponent } from './contactus/contactus.component';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
     NgOtpInputModule,

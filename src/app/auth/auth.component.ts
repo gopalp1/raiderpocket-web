@@ -1,112 +1,113 @@
-import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { urlConstants } from 'src/app/core/constants.ts/url';
-import { HttpService } from 'src/app/core/services/http.service';
-import { UserService } from 'src/app/core/services/user.service';
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  PhoneAuthProvider,
+} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { Location } from '@angular/common';
+const firebaseConfig = {
+  apiKey: 'AIzaSyATAOJcTLwJVAoV2tZBgeKQgeIbYwy7Cps',
+  authDomain: 'mr-meat-4ea02.firebaseapp.com',
+  projectId: 'mr-meat-4ea02',
+  storageBucket: 'mr-meat-4ea02.firebasestorage.app',
+  messagingSenderId: '933804502159',
+  appId: '1:933804502159:web:f68515cfc8be5905a894fa',
+  measurementId: 'G-7RGY1RX0QH',
+};
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit, AfterViewInit {
   mobileNumber: string = '';
   isOtpSent: boolean = false;
-  showOtpInput: boolean = false;
   otpValue: string = '';
+  verificationId: string = '';
   configuration = {
-    length: 4,
+    length: 6,
     allowNumbersOnly: true,
   };
   mobilePattern = /^[6-9]\d{9}$/;
+
+  auth = getAuth(initializeApp(firebaseConfig));
+  recaptchaVerifier!: RecaptchaVerifier;
   constructor(
-    private apiService: HttpService,
-    private storageService: UserService,
+    private afAuth: AngularFireAuth,
     private router: Router,
-    private toast: MatSnackBar,
-    private location: Location
-  ) {
-    const data: any = storageService.getUserValue();
-    console.log(data, 'data in login');
-    if (data) {
-      // this.router.navigate(['/admin']);
-    }
+    private location: Location,
+    private toast: MatSnackBar
+  ) {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    const auth = getAuth();
+    this.recaptchaVerifier = new RecaptchaVerifier(
+      this.auth,
+      'recaptcha-container',
+      {
+        size: 'invisible',
+        callback: (response: any) => {
+          console.log('reCAPTCHA solved:', response);
+        },
+        'expired-callback': () => {
+          alert('reCAPTCHA expired. Try again.');
+        },
+      }
+    );
+
+    this.recaptchaVerifier.render();
   }
-  goBack() {
-    this.isOtpSent = false;
-  }
+
   sendOtp() {
-    if (this.mobilePattern.test(this.mobileNumber)) {
-      const payload = {
-        url: urlConstants.GET_OTP,
-        payload: {
-          mobile: this.mobileNumber,
-          userType: 'Admin',
-        },
-      };
-      this.apiService.post(payload).then(
-        (resp: any) => {
-          console.log(resp, 'resp');
-          this.isOtpSent = true;
-          this.showOtpInput = true;
-        },
-        (error) => {
-          console.log(error, 'erroe');
-        }
-      );
-    } else {
-      this.toast.open('Please enter valid mobile number', 'Close', {
-        duration: 3000,
-        panelClass: 'error-toast',
-        horizontalPosition: 'end',
-        verticalPosition: 'top',
+    const auth = getAuth();
+    signInWithPhoneNumber(
+      this.auth,
+      `+91 ${this.mobileNumber}`,
+      this.recaptchaVerifier
+    )
+      .then((confirmationResult) => {
+        this.verificationId = confirmationResult.verificationId;
+        console.log('OTP sent successfully.');
+      })
+      .catch((error) => {
+        console.error('Error during OTP sending:', error);
       });
-    }
   }
 
   onOtpChange(value: string) {
     this.otpValue = value;
-    console.log('Current OTP:', this.otpValue);
+  }
+
+  goBack() {
+    this.isOtpSent = false;
   }
 
   verifyOtp() {
-    if (this.otpValue.length === this.configuration.length) {
-      const payload = {
-        url: urlConstants.VERIFY_OTP,
-        payload: {
-          otp: this.otpValue,
-          mobile: this.mobileNumber,
-          name: 'Your name',
-          userType: 'Admin',
-        },
-      };
-
-      this.apiService.post(payload).then((resp: any) => {
-        if (resp?.token) {
-          this.storageService.setUserValue(resp);
-          this.router.navigate(['/admin']);
-        }
+    const credential = PhoneAuthProvider.credential(
+      this.verificationId,
+      this.otpValue
+    );
+    this.afAuth
+      .signInWithCredential(credential)
+      .then(() => {
+        this.router.navigate(['/admin']);
+      })
+      .catch(() => {
+        this.toast.open('Invalid OTP. Please try again.', 'Close', {
+          duration: 3000,
+          panelClass: 'error-toast',
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
       });
-    } else {
-      this.toast.open('Invalid OTP. Please try again.', 'Close', {
-        duration: 3000,
-        panelClass: 'error-toast',
-        horizontalPosition: 'end',
-        verticalPosition: 'top',
-      });
-    }
-  }
-
-  // Resend OTP Handler
-  resendOtp() {
-    this.toast.open('OTP has been resent!.', 'Close', {
-      duration: 3000,
-      panelClass: 'success-toast',
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-    });
   }
 
   navigateToWeb() {
