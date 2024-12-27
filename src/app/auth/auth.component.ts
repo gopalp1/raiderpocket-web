@@ -67,7 +67,6 @@ export class AuthComponent implements OnInit, AfterViewInit {
   }
 
   sendOtp() {
-    const auth = getAuth();
     signInWithPhoneNumber(
       this.auth,
       `+91 ${this.mobileNumber}`,
@@ -76,6 +75,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
       .then((confirmationResult) => {
         this.verificationId = confirmationResult.verificationId;
         console.log('OTP sent successfully.');
+        this.isOtpSent = true;
       })
       .catch((error) => {
         console.error('Error during OTP sending:', error);
@@ -98,6 +98,12 @@ export class AuthComponent implements OnInit, AfterViewInit {
     this.afAuth
       .signInWithCredential(credential)
       .then(() => {
+        this.toast.open('Loggedin successfully!', 'Close', {
+          duration: 3000,
+          panelClass: 'success-toast',
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
         this.router.navigate(['/admin']);
       })
       .catch(() => {
