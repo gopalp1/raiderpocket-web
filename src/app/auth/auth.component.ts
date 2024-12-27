@@ -74,8 +74,13 @@ export class AuthComponent implements OnInit, AfterViewInit {
     )
       .then((confirmationResult) => {
         this.verificationId = confirmationResult.verificationId;
-        console.log('OTP sent successfully.');
         this.isOtpSent = true;
+        this.toast.open('OTP sent to your mobile', 'Close', {
+          duration: 3000,
+          panelClass: 'success-toast',
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
       })
       .catch((error) => {
         console.error('Error during OTP sending:', error);
