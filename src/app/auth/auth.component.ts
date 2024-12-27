@@ -73,6 +73,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
       this.recaptchaVerifier
     )
       .then((confirmationResult) => {
+        console.log(confirmationResult, 'confirmationResult');
         this.verificationId = confirmationResult.verificationId;
         this.isOtpSent = true;
         this.toast.open('OTP sent to your mobile', 'Close', {
@@ -111,7 +112,8 @@ export class AuthComponent implements OnInit, AfterViewInit {
         });
         this.router.navigate(['/admin']);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err, 'error on verify');
         this.toast.open('Invalid OTP. Please try again.', 'Close', {
           duration: 3000,
           panelClass: 'error-toast',
