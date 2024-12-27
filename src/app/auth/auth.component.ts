@@ -7,6 +7,7 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
   PhoneAuthProvider,
+  signInWithCredential,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { Location } from '@angular/common';
@@ -101,8 +102,8 @@ export class AuthComponent implements OnInit, AfterViewInit {
       this.verificationId,
       this.otpValue
     );
-    this.afAuth
-      .signInWithCredential(credential)
+    this.auth;
+    signInWithCredential(this.auth, credential)
       .then(() => {
         this.toast.open('Loggedin successfully!', 'Close', {
           duration: 3000,
